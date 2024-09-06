@@ -1,6 +1,13 @@
 import React from "react";
 
-const brandsData = [
+type Brand = {
+  imageSrc: string;
+  lightImageSrc: string;
+  altText: string;
+  link: string;
+};
+
+const brandsData: Brand[] = [
   {
     imageSrc:
       "https://cdn.tailgrids.com/2.2/assets/images/brands/graygrids.svg",
@@ -32,6 +39,7 @@ const brandsData = [
     link: "#",
   },
 ];
+
 export default function Brands() {
   return (
     <section className="bg-slate-100 py-10 lg:py-[60px] dark:bg-dark">
@@ -53,21 +61,19 @@ export default function Brands() {
   );
 }
 
-const SingleImage = ({ brand }: { brand: any }) => {
+const SingleImage = ({ brand }: { brand: Brand }) => {
   const { link, imageSrc, lightImageSrc, altText } = brand;
   return (
-    <>
-      <a
-        href={link}
-        className="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]"
-      >
-        <img src={imageSrc} alt={altText} className="h-10 w-full dark:hidden" />
-        <img
-          src={lightImageSrc}
-          alt={altText}
-          className="hidden h-10 w-full dark:block"
-        />
-      </a>
-    </>
+    <a
+      href={link}
+      className="mx-4 flex w-[150px] items-center justify-center py-5 2xl:w-[180px]"
+    >
+      <img src={imageSrc} alt={altText} className="h-10 w-full dark:hidden" />
+      <img
+        src={lightImageSrc}
+        alt={altText}
+        className="hidden h-10 w-full dark:block"
+      />
+    </a>
   );
 };
